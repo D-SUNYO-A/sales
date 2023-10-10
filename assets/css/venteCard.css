@@ -1,0 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+}
+
+.card {
+  width: 100%;
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1 0 0;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 8px 8px 24px 0px rgba(11, 24, 43, 0.08);
+}
+
+.card .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.card .card-header p {
+  color: #6366f1;
+  text-align: center;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.card .card-header span {
+  display: flex;
+  padding: 3px 6px;
+  align-items: flex-start;
+  border-radius: 8px;
+
+  /* text style */
+
+  text-align: center;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.card .card-header span.online {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.card .card-header span.offline {
+  background: #ffedd5;
+  color: #9a3412;
+}
+
+.card .card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.info {
+  display: flex;
+  padding: 8px 0px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+  border-bottom: 1px solid #dadee3;
+}
+
+.card .card-body .info:last-child {
+  border-bottom: none;
+}
+
+.info .info-label {
+  color: #6d7580;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.info .info-value {
+  color: #2c3a4b;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.card-footer {
+  width: 100%;
+}
+
+.card-footer button {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #6365f1d4;
+  /* Texte style */
+  color: #fff;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px;
+  transition: background 0.4s ease-in-out;
+}
+
+.card-footer button:hover {
+  background: #6366f1;
+}

@@ -1,5 +1,8 @@
+// Format de date personnalisé
+export const customFormat = "DD/MM/YYYY";
+
 // Fonction pour formater une date au format personnalisé
-const formatDateToCustomFormat = (dateISO8601, customFormat) => {
+export const formatDateToCustomFormat = (dateISO8601, customFormat) => {
 
   // Crée un objet Date à partir de la date au format ISO8601
   const dateObj = new Date(dateISO8601);

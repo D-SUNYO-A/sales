@@ -1,23 +1,46 @@
-// Selection du div avec la class 'list' du tableau dot l'id est : 'tableau-ventes'
-const listeVente = document.getElementsByClassName("list")[0];
+import { displayVenteData, venteData } from "./module/venteModule.js";
+import { calculateTotalPages, updatePageIndicator } from "./module/pageModule.js";
+import { generateBarChart, generateDoughnutChart, generatePieChart, generateRevenueByRegionStackedBarChart } from "./module/chartModule.js";
+import './module/tabsModule.js'
 
-// Selection du modal pour les details d'une vente
-const modal = document.getElementById("venteModal");
+// Page actuelle
+let currentPage = 1;
 
-// Selection du contenue du modal
-const modalContent = document.getElementById("modalContent");
+// Nombre de vente par page
+let itemsPerPage = 8;
 
-// Sélectionnez tous les menu .tab-link
-const tabLinks = document.querySelectorAll(".tab-link");
+// Nombre de page total
+const totalPages = calculateTotalPages(venteData, itemsPerPage);
 
-// Sélectionnez tous les tabs de tab-content
-const tabContents = document.querySelectorAll(".tab-pane");
+// Fonction pour actualiser la page
+const refreshPage = () => {
+    displayVenteData(venteData, currentPage, itemsPerPage);
+    updatePageIndicator(currentPage, totalPages);
+}
 
-// Pour stocker les données de ventes extrait du JSON
-let venteData;
+refreshPage();
 
-// Format de date personnalisé
-const customFormat = "DD/MM/YYYY";
+// Gestionnaire d'événements pour le bouton Suivant
+document.getElementById("nextPageButton").addEventListener("click", () => {
+  if (currentPage < totalPages) {
+    currentPage++;
+    refreshPage();
+  }
+});
 
-// Créez un événement personnalisé pour signaler que les données sont prêtes
-const dataReadyEvent = new Event('dataReady');
+// Gestionnaire d'événements pour le bouton Précédent
+document.getElementById("previousPageButton").addEventListener("click", () => {
+  if (currentPage > 1) {
+    currentPage--;
+    refreshPage();
+  }
+});
+
+
+// Charts
+generateBarChart(venteData, "region", "ventesParRegion");
+generateDoughnutChart(venteData, "sales_channel", "ventesParCanal");
+generatePieChart(venteData, "item_type", "ventesParArticle");
+
+// Chiffre d'affaire par région
+generateRevenueByRegionStackedBarChart(venteData, "chiffresAffairesParRegionStacked");

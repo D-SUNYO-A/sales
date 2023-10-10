@@ -1,3 +1,9 @@
+// Sélectionnez tous les menu .tab-link
+const tabLinks = document.querySelectorAll(".tab-link");
+
+// Sélectionnez tous les tabs de tab-content
+const tabContents = document.querySelectorAll(".tab-pane");
+
 // Afficher par default la liste des données
 tabContents[0].style.display = "flex";
 
