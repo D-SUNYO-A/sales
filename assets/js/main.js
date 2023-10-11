@@ -2,6 +2,7 @@ import { displayVenteData, venteData } from "./module/venteModule.js";
 import { calculateTotalPages, updatePageIndicator } from "./module/pageModule.js";
 import { generateBarChart, generateDoughnutChart, generatePieChart, generateRevenueByRegionStackedBarChart } from "./module/chartModule.js";
 import './module/tabsModule.js'
+import { loadSkeletonCard } from "./module/loaderModule.js";
 
 // Page actuelle
 let currentPage = 1;
@@ -12,10 +13,15 @@ let itemsPerPage = 8;
 // Nombre de page total
 const totalPages = calculateTotalPages(venteData, itemsPerPage);
 
+// Afficher les card-skeleton en attendant que les données recuperer soient prets
+loadSkeletonCard(itemsPerPage);
+
 // Fonction pour actualiser la page
 const refreshPage = () => {
-    displayVenteData(venteData, currentPage, itemsPerPage);
-    updatePageIndicator(currentPage, totalPages);
+    setTimeout(() => {
+      displayVenteData(venteData, currentPage, itemsPerPage);
+      updatePageIndicator(currentPage, totalPages);
+    }, 1500)
 }
 
 refreshPage();
@@ -24,6 +30,7 @@ refreshPage();
 document.getElementById("nextPageButton").addEventListener("click", () => {
   if (currentPage < totalPages) {
     currentPage++;
+    loadSkeletonCard(itemsPerPage);
     refreshPage();
   }
 });
@@ -32,6 +39,7 @@ document.getElementById("nextPageButton").addEventListener("click", () => {
 document.getElementById("previousPageButton").addEventListener("click", () => {
   if (currentPage > 1) {
     currentPage--;
+    loadSkeletonCard(itemsPerPage);
     refreshPage();
   }
 });

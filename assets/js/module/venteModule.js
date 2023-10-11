@@ -1,6 +1,7 @@
 import Vente from "./../class/Vente.js";
 import { sliceDataToDisplay } from "./../utils/dataUtils.js";
 import "./../components/VenteCard.js";
+import { loadSkeletonCard } from "./loaderModule.js";
 
 // Fonction pour récupérer les données de vente depuis le fichier JSON
 export const getVenteData = async () => {

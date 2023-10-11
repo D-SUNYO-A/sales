@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  box-shadow: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+}
+
+.skeleton-card {
+  width: 100%;
+  display: flex;
+  padding: 24px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  flex: 1 0 0;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 8px 8px 24px 0px rgba(11, 24, 43, 0.08);
+}
+
+.skeleton-card .skeleton-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.skeleton-card .skeleton-card-header p {
+  display: flex;
+  width: 140px;
+  height: 24px;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-radius: 4px;
+  /* background: #cbd5e1; */
+}
+
+.skeleton-card .skeleton-card-header span {
+  display: flex;
+  width: 52px;
+  height: 24px;
+  padding: 3px 6px;
+  align-items: flex-start;
+  border-radius: 4px;
+  /* background: #cbd5e1; */
+}
+
+.skeleton-card .skeleton-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+}
+
+.skeleton-card .skeleton-card-body .info {
+  display: flex;
+  padding: 8px 0px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  align-self: stretch;
+  border-bottom: 1px solid transparent;
+}
+
+.skeleton-card .skeleton-card-body .info:last-child {
+  border-bottom: none;
+}
+
+.skeleton-card .skeleton-card-body .info p {
+  display: flex;
+  height: 25px;
+  align-items: flex-start;
+  align-self: stretch;
+  border-radius: 4px;
+  /* background: #cbd5e1; */
+}
+
+.skeleton-card .skeleton-card-footer {
+  display: flex;
+  height: 40px;
+  padding: 10px 20px;
+  justify-content: center;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 4px;
+  /* background: #cbd5e1; */
+}
+
+.skeleton-card .skeleton-card-header p, 
+.skeleton-card .skeleton-card-header span, 
+.skeleton-card .skeleton-card-body .info p,
+.skeleton-card .skeleton-card-footer {
+  opacity: .7;
+  animation: skeleton-loader 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loader {
+  0% {
+    background: hsl(200, 20%, 70%);
+  }
+  100% {
+    background: hsl(200, 20%, 95%);
+  }
+}
+

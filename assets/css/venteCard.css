@@ -6,6 +6,7 @@
   box-shadow: none;
   outline: none;
   font-family: "Poppins", sans-serif;
+  transition: background 0.4s ease-in-out;
 }
 
 .card {
@@ -124,7 +125,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: 20px;
-  transition: background 0.4s ease-in-out;
+  /* transition: background 0.4s ease-in-out; */
 }
 
 .card-footer button:hover {

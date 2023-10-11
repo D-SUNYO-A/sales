@@ -8,3 +8,4 @@ export const updatePageIndicator = (currentPage, totalPages) => {
   const pageIndicator = document.getElementById("currentPageIndicator");
   pageIndicator.textContent = `Page ${currentPage}/${totalPages}`;
 };
+
