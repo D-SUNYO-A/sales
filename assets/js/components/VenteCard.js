@@ -3,11 +3,10 @@ import "./VenteModal.js";
 class VenteCard extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
   }
 
   set data(vente) {
-    this.shadowRoot.innerHTML = `
+    this.innerHTML = `
         <link rel="stylesheet" href="./../../assets/css/venteCard.css">
         <div class="card">
             <div class="card-header">
@@ -35,7 +34,7 @@ class VenteCard extends HTMLElement {
     `;
 
     // Récupérer la référence au bouton "Voir plus"
-    const moreButton = this.shadowRoot.querySelector('.more');
+    const moreButton = this.querySelector('.more');
 
     // Ajouter un gestionnaire d'événements au bouton pour afficher son modal
     moreButton.addEventListener('click', () => {

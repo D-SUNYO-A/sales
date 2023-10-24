@@ -1,20 +1,22 @@
 import { calculChiffresAffairesParRegion, countOccurrences } from "../utils/dataUtils.js";
+import { getVenteData } from "./venteModule.js";
 
 /**
  * Génère un graphique.
  *
- * @param {Array} data - Les données à afficher dans le graphique.
  * @param {string} labelKey - La clé utilisée pour extraire les libellés des catégories (Ex: order_id, region, country, ...).
  * @param {string} canvasId - L'identifiant du canvas HTML où afficher le graphique.
  */
 
-export const generateBarChart = (data, labelKey, canvasId) => {
+export const generateBarChart = async (labelKey, canvasId) => {
+
+  const venteData = await getVenteData();
 
   // Récupère le contexte du canvas
   const context = document.getElementById(canvasId);
 
   // Compte le nombre d'occurrences de chaque catégorie dans les données
-  const salesByCategory = countOccurrences(data, labelKey);
+  const salesByCategory = countOccurrences(venteData, labelKey);
 
   // Définition des données pour le graphique
   const labels = Object.keys(salesByCategory);
@@ -48,9 +50,10 @@ export const generateBarChart = (data, labelKey, canvasId) => {
   });
 };
 
-export const generateDoughnutChart = (data, labelKey, canvasId) => {
+export const generateDoughnutChart = async (labelKey, canvasId) => {
+  const venteData = await getVenteData();
   const context = document.getElementById(canvasId);
-  const salesByCategory = countOccurrences(data, labelKey);
+  const salesByCategory = countOccurrences(venteData, labelKey);
 
   // Définition des données pour le graphique
   const labels = Object.keys(salesByCategory);
@@ -79,9 +82,10 @@ export const generateDoughnutChart = (data, labelKey, canvasId) => {
   });
 };
 
-export const generatePieChart = (data, labelKey, canvasId) => {
+export const generatePieChart = async (labelKey, canvasId) => {
+  const venteData = await getVenteData();
   const context = document.getElementById(canvasId);
-  const salesByCategory = countOccurrences(data, labelKey);
+  const salesByCategory = countOccurrences(venteData, labelKey);
 
   // Définition des données pour le graphique
   const labels = Object.keys(salesByCategory);
@@ -137,12 +141,12 @@ export const generatePieChart = (data, labelKey, canvasId) => {
 /**
  * Génère un graphique.
  *
- * @param {Array} data - Les données à afficher dans le graphique.
  * @param {string} canvasId - L'identifiant du canvas HTML où afficher le graphique.
  */
-export const generateRevenueByRegionStackedBarChart = (data, canvasId) => {
+export const generateRevenueByRegionStackedBarChart = async (canvasId) => {
+  const venteData = await getVenteData();
   // Créez une structure de données pour stocker les chiffres d'affaires par région
-  const chiffresAffairesParRegion = calculChiffresAffairesParRegion(data);
+  const chiffresAffairesParRegion = calculChiffresAffairesParRegion(venteData);
 
   // Obtenez les libellés (noms des régions) et les valeurs (chiffres d'affaires) à partir de la structure de données
   const labels = Object.keys(chiffresAffairesParRegion);

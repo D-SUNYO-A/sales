@@ -3,11 +3,11 @@ import { formatDateToCustomFormat, customFormat } from "../utils/formatDate.js";
 class VenteModal extends HTMLElement {
   constructor() {
     super();
-    this.attachShadow({ mode: "open" });
+    this.root = this.attachShadow({ mode: "open" });
   }
 
   set data(vente) {
-    this.shadowRoot.innerHTML = `
+    this.root.innerHTML = `
         <link rel="stylesheet" href="./../../assets/css/venteModal.css">
         <div id="venteModal" class="modal">
             <div id="modalContent" class="modal-content">
@@ -85,14 +85,14 @@ class VenteModal extends HTMLElement {
     `;
 
     // Gestionnaire d'événements pour le bouton de fermeture
-    const closeButton = this.shadowRoot.querySelector('#closeButton');
+    const closeButton = this.root.querySelector('#closeButton');
     closeButton.addEventListener('click', () => {
         this.close();
     });
 
     // Fermer le modal lorsque l'utilisateur clique en dehors de celui-ci
-    this.shadowRoot.addEventListener("click", (event) => {
-        const venteModal = this.shadowRoot.getElementById("venteModal")
+    this.root.addEventListener("click", (event) => {
+        const venteModal = this.root.getElementById("venteModal")
         if (event.target === venteModal) {
             this.close();
         }
@@ -102,14 +102,14 @@ class VenteModal extends HTMLElement {
 
   // Ouvrir modal
   open = () => {
-    this.shadowRoot.querySelector('#venteModal').classList.add('open');
+    this.root.querySelector('#venteModal').classList.add('open');
     // Ajouter la classe CSS pour désactiver le défilement
     document.body.style.overflow = "hidden";
   }
 
   // Fermer modal
   close = () => {
-    this.shadowRoot.querySelector('#venteModal').classList.remove('open');
+    this.root.querySelector('#venteModal').classList.remove('open');
     // Supprimer la classe CSS pour réactiver le défilement
     document.body.style.overflow = "auto";
     // Appeler la méthode de suppression pour supprimer le modal du DOM

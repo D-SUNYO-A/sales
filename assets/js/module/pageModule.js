@@ -1,6 +1,9 @@
+import { getVenteData } from "./venteModule.js";
+
 // Fonction pour calculer le total des pages
-export const calculateTotalPages = (data, itemsPerPage) => {
-  return Math.ceil(data.length / itemsPerPage);
+export const calculateTotalPages = async (itemsPerPage) => {
+  const venteData = await getVenteData();
+  return Math.ceil(venteData.length / itemsPerPage);
 };
 
 // Fonction pour mettre à jour l'indicateur de page actuelle

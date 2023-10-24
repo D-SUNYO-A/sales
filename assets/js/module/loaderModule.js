@@ -7,4 +7,3 @@ export const loadSkeletonCard = itemsPerPage => {
         listContainer.appendChild(document.createElement("vente-card-skeleton"))
     }
 }
-

@@ -1,8 +1,8 @@
-import { displayVenteData, venteData } from "./module/venteModule.js";
-import { calculateTotalPages, updatePageIndicator } from "./module/pageModule.js";
-import { generateBarChart, generateDoughnutChart, generatePieChart, generateRevenueByRegionStackedBarChart } from "./module/chartModule.js";
-import './module/tabsModule.js'
+import "./module/tabsModule.js";
 import { loadSkeletonCard } from "./module/loaderModule.js";
+import { calculateTotalPages, updatePageIndicator } from "./module/pageModule.js";
+import { displayVenteData } from "./module/venteModule.js";
+import { generateBarChart, generateDoughnutChart, generatePieChart, generateRevenueByRegionStackedBarChart } from "./module/chartModule.js";
 
 // Page actuelle
 let currentPage = 1;
@@ -11,18 +11,13 @@ let currentPage = 1;
 let itemsPerPage = 8;
 
 // Nombre de page total
-const totalPages = calculateTotalPages(venteData, itemsPerPage);
-
-// Afficher les card-skeleton en attendant que les données recuperer soient prets
-loadSkeletonCard(itemsPerPage);
+const totalPages = await calculateTotalPages(itemsPerPage);
 
 // Fonction pour actualiser la page
 const refreshPage = () => {
-    setTimeout(() => {
-      displayVenteData(venteData, currentPage, itemsPerPage);
-      updatePageIndicator(currentPage, totalPages);
-    }, 1500)
-}
+  displayVenteData(currentPage, itemsPerPage);
+  updatePageIndicator(currentPage, totalPages);
+};
 
 refreshPage();
 
@@ -44,11 +39,10 @@ document.getElementById("previousPageButton").addEventListener("click", () => {
   }
 });
 
-
 // Charts
-generateBarChart(venteData, "region", "ventesParRegion");
-generateDoughnutChart(venteData, "sales_channel", "ventesParCanal");
-generatePieChart(venteData, "item_type", "ventesParArticle");
+generateBarChart("region", "ventesParRegion");
+generateDoughnutChart("sales_channel", "ventesParCanal");
+generatePieChart("item_type", "ventesParArticle");
 
 // Chiffre d'affaire par région
-generateRevenueByRegionStackedBarChart(venteData, "chiffresAffairesParRegionStacked");
+generateRevenueByRegionStackedBarChart("chiffresAffairesParRegionStacked");
