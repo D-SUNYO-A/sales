@@ -8,6 +8,7 @@ Sales Insights est une application web qui fournit des analyses et des visualisa
 - [Captures d'écran](#captures-décran)
 - [Technologies Utilisées](#technologies-utilisées)
 - [Comment Utiliser](#comment-utiliser)
+- [Aperçu en Ligne](#aperçu-en-ligne)
 - [Contributeurs](#contributeurs)
 
 ## À Propos
@@ -34,6 +35,10 @@ Sales Insights a été développé en utilisant les technologies suivantes :
 
 1. Clonez ce dépôt sur votre machine locale.
 2. Ouvrez le fichier `index.html` dans [Visual Studio Code](https://code.visualstudio.com/) avec l'extension [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
+
+## Aperçu en Ligne
+
+Vous pouvez explorer une démo en ligne de "Sales Insights" en suivant ce lien : [Aperçu en Ligne](https://sunyo-sales-insights.netlify.app/)
 
 ## Contributeurs
 
